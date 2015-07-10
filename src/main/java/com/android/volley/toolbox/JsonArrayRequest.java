@@ -16,15 +16,15 @@
 
 package com.android.volley.toolbox;
 
-import java.io.UnsupportedEncodingException;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Response;
 import com.android.volley.http.RequestCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * A request for retrieving a {@link JSONArray} response body at a given URL.
@@ -36,13 +36,9 @@ public class JsonArrayRequest extends JsonRequest<JSONArray> {
 	 * 
 	 * @param url
 	 *            URL to fetch the JSON from
-	 * @param listener
-	 *            Listener to receive the JSON response
-	 * @param errorListener
-	 *            Error listener, or null to ignore errors.
 	 */
 	public JsonArrayRequest(String url, RequestCallback<JSONArray> callback) {
-		super(Method.GET, url, null, callback);
+		super(Method.GET, url, callback);
 	}
 
 	/**
@@ -52,15 +48,9 @@ public class JsonArrayRequest extends JsonRequest<JSONArray> {
 	 *            the HTTP method to use
 	 * @param url
 	 *            URL to fetch the JSON from
-	 * @param jsonRequest
-	 *            A {@link JSONArray} to post with the request. Null is allowed and indicates no parameters will be posted along with request.
-	 * @param listener
-	 *            Listener to receive the JSON response
-	 * @param errorListener
-	 *            Error listener, or null to ignore errors.
 	 */
-	public JsonArrayRequest(int method, String url, JSONArray jsonRequest, RequestCallback<JSONArray> callback) {
-		super(method, url, (jsonRequest == null) ? null : jsonRequest.toString(), callback);
+	public JsonArrayRequest(int method, String url, RequestCallback<JSONArray> callback) {
+		super(method, url, callback);
 	}
 
 	@Override

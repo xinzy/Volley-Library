@@ -37,21 +37,16 @@ public abstract class JsonRequest<T> extends Request<T> {
 	/** Content type for request. */
 	private static final String PROTOCOL_CONTENT_TYPE = String.format("application/json; charset=%s", PROTOCOL_CHARSET);
 
-	private final String mRequestBody;
-
 	/**
 	 * Deprecated constructor for a JsonRequest which defaults to GET unless {@link #getPostBody()} or {@link #getPostParams()} is overridden (which
 	 * defaults to POST).
-	 *
-	 * @deprecated Use {@link #JsonRequest(int, String, String, RequestCallback)}.
 	 */
-	public JsonRequest(String url, String requestBody, RequestCallback<T> callback) {
-		this(Method.DEPRECATED_GET_OR_POST, url, requestBody, callback);
+	public JsonRequest(String url, RequestCallback<T> callback) {
+		this(Method.DEPRECATED_GET_OR_POST, url, callback);
 	}
 
-	public JsonRequest(int method, String url, String requestBody, RequestCallback<T> callback) {
+	public JsonRequest(int method, String url, RequestCallback<T> callback) {
 		super(method, url, callback);
-		mRequestBody = requestBody;
 	}
 
 	@Override
@@ -60,15 +55,5 @@ public abstract class JsonRequest<T> extends Request<T> {
 	@Override
 	public String getBodyContentType() {
 		return PROTOCOL_CONTENT_TYPE;
-	}
-
-	@Override
-	public byte[] getBody() {
-		try {
-			return mRequestBody == null ? null : mRequestBody.getBytes(PROTOCOL_CHARSET);
-		} catch (UnsupportedEncodingException uee) {
-			VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, PROTOCOL_CHARSET);
-			return null;
-		}
 	}
 }

@@ -59,8 +59,6 @@ public class ImageRequest extends Request<Bitmap> {
 	 *
 	 * @param url
 	 *            URL of the image
-	 * @param listener
-	 *            Listener to receive the decoded bitmap
 	 * @param maxWidth
 	 *            Maximum width to decode this bitmap to, or zero for none
 	 * @param maxHeight
@@ -69,8 +67,6 @@ public class ImageRequest extends Request<Bitmap> {
 	 *            The ImageViews ScaleType used to calculate the needed image size.
 	 * @param decodeConfig
 	 *            Format to decode the bitmap to
-	 * @param errorListener
-	 *            Error listener, or null to ignore errors
 	 */
 	public ImageRequest(String url, int maxWidth, int maxHeight, ScaleType scaleType, Config decodeConfig, RequestCallback<Bitmap> callback) {
 		super(Method.GET, url, callback);

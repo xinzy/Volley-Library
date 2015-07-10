@@ -14,7 +14,7 @@ import java.util.Map;
 
 public abstract class RequestBuilder<T> {
 	
-	public static final int DEFAULT_TIMEOUT = 30 * 1000;//默认Socket超时时间
+	public static final int DEFAULT_TIMEOUT = 3 * 1000;//默认Socket超时时间
 	public static final int DEFAULT_RETRIES = 1;		//默认重试次数，默认连接失败不重试
 
 	String url;
@@ -85,12 +85,14 @@ public abstract class RequestBuilder<T> {
 		return this;
 	}
 
-	public RequestBuilder<T> setUrl(String url) {
+	/*package*/
+	RequestBuilder<T> setUrl(String url) {
 		this.url = url;
 		return this;
 	}
 
-	public RequestBuilder<T> setMethod(int method) {
+	/*package*/
+	RequestBuilder<T> setMethod(int method) {
 		this.method = method;
 		return this;
 	}
