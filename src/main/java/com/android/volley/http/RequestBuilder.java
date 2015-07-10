@@ -1,9 +1,5 @@
 package com.android.volley.http;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
 import android.text.TextUtils;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -11,6 +7,10 @@ import com.android.volley.Request;
 import com.android.volley.Request.Method;
 import com.android.volley.Request.Priority;
 import com.android.volley.RetryPolicy;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class RequestBuilder<T> {
 	
@@ -167,36 +167,4 @@ public abstract class RequestBuilder<T> {
 		this.requestParams = params;
 		return this;
 	}
-	
-	//**Response 默认回调接口***********************************************************************************
-//	
-//	class DefaultResponseListener implements Listener<T> {
-//		private RequestCallback<T> mRequestListener;
-//
-//		public DefaultResponseListener(RequestCallback<T> l) {
-//			mRequestListener = l;
-//		}
-//
-//		@Override
-//		public void onResponse(T response) {
-//			if (mRequestListener != null) {
-//				mRequestListener.onSuccess(response);
-//			}
-//		}
-//	}
-//
-//	class DefaultResponseErrorListener implements ErrorListener {
-//		private RequestCallback<T> mRequestListener;
-//
-//		public DefaultResponseErrorListener(RequestCallback<T> l) {
-//			mRequestListener = l;
-//		}
-//
-//		@Override
-//		public void onErrorResponse(VolleyError error) {
-//			if (mRequestListener != null) {
-//				mRequestListener.onError(error);
-//			}
-//		}
-//	}
 }
