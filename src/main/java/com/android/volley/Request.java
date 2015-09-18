@@ -441,7 +441,7 @@ public abstract class Request<T> implements Comparable<Request<T>> {
 			for (Map.Entry<String, String> entry : params.entrySet()) {
 				encodedParams.append(URLEncoder.encode(entry.getKey(), paramsEncoding));
 				encodedParams.append('=');
-				encodedParams.append(URLEncoder.encode(entry.getValue(), paramsEncoding));
+                encodedParams.append(entry.getValue() == null ? "" : URLEncoder.encode(entry.getValue(), paramsEncoding));
 				encodedParams.append('&');
 			}
 			return encodedParams.toString().getBytes(paramsEncoding);
