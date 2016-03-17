@@ -2,7 +2,10 @@
 基于Google Volley二次封装
 
 Application 启动时，在onCreate()里面添加Volley初始化代码  
+
+```
 RequestManager.getInstance().init(this);
+```
 
 发送一个请求  
 
